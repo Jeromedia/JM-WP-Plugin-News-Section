@@ -27,8 +27,8 @@ function jm_news_shortcode($atts) {
                 echo '</div>';
             }
 
-            echo '<h2 class="jm-news-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-            echo '<div class="jm-news-excerpt">' . get_the_excerpt() . '</div>';
+            echo '<h4 class="jm-news-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h4>';
+            echo '<div class="jm-news-excerpt">' . get_the_excerpt() . '... <a class="jm-news-link" href="' . get_permalink() . '">Read more</a></div>';
             echo '</div>';
         }
         echo '</div>';
