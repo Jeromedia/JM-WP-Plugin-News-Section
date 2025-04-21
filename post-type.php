@@ -33,7 +33,7 @@ function jm_register_news_post_type() {
             'menu_name' => 'News',
         ],
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'rewrite' => [
             'slug' => 'news',  // Defines the base URL for your News posts
             'with_front' => false, // Prevents adding the site base to the URL (i.e., /news/news)
