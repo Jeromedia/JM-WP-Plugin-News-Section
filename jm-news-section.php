@@ -6,12 +6,10 @@ Version: 1.0
 Author: Jeromedia
 */
 
-// Exit if accessed directly
 if (!defined('ABSPATH')) {
     exit;
 }
 
-// Register all core plugin files
-include plugin_dir_path(__FILE__) . 'post-type.php';      // Custom Post Type
-include plugin_dir_path(__FILE__) . 'shortcodes.php';     // Shortcode Logic
-include plugin_dir_path(__FILE__) . 'custom-css.php';     // Custom CSS Admin Page
+include plugin_dir_path(__FILE__) . 'post-type.php';
+include plugin_dir_path(__FILE__) . 'shortcode.php';
+include plugin_dir_path(__FILE__) . 'custom-css.php';

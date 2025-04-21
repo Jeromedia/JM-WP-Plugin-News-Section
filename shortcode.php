@@ -4,50 +4,40 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Shortcode to display all news with featured images
 function jm_news_shortcode($atts) {
-    // Query to fetch all news posts
+    ob_start();
+
     $args = [
         'post_type' => 'news',
-        'posts_per_page' => -1,  // Show all news
+        'posts_per_page' => -1,
         'post_status' => 'publish',
     ];
-    
+
     $query = new WP_Query($args);
-    
+
     if ($query->have_posts()) {
-        $output = '<div class="news-list">';
+        echo '<div class="jm-news-list">';
         while ($query->have_posts()) {
             $query->the_post();
-            
-            // Start output for each news item
-            $output .= '<div class="news-item">';
-            
-            // Display the featured image if it exists
+
+            echo '<div class="jm-news-item">';
             if (has_post_thumbnail()) {
-                $output .= '<div class="news-thumbnail">' . get_the_post_thumbnail(null, 'medium') . '</div>';
+                echo '<div class="jm-news-thumbnail">';
+                the_post_thumbnail('medium');
+                echo '</div>';
             }
-            
-            // Display the title of the news post
-            $output .= '<h2 class="news-title">' . get_the_title() . '</h2>';
-            
-            // Display the excerpt
-            $output .= '<div class="news-excerpt">' . get_the_excerpt() . '</div>';
-            
-            // Link to the full news post
-            $output .= '<a href="' . get_permalink() . '">Read More</a>';
-            
-            $output .= '</div>';  // End news item
+
+            echo '<h2 class="jm-news-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+            echo '<div class="jm-news-excerpt">' . get_the_excerpt() . '</div>';
+            echo '</div>';
         }
-        $output .= '</div>';  // End news list
+        echo '</div>';
         wp_reset_postdata();
     } else {
-        $output = 'No news found.';
+        echo '<p>No news found.</p>';
     }
 
-    // Return the output of the news list
-    return $output;
+    return ob_get_clean();
 }
 
-// Register the shortcode
 add_shortcode('jm-news-list', 'jm_news_shortcode');
