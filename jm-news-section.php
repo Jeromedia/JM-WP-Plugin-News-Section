@@ -2,7 +2,7 @@
 /*
 Plugin Name: Jeromedia: News Section
 Description: A custom plugin for managing News as a custom post type with shortcode and custom CSS.
-Version: 1.0
+Version: 1.1
 Author: Jeromedia
 */
 
